@@ -23,3 +23,12 @@
   align-items: center;
   gap: 30px;
 }
+
+@media(min-width: 1024px){
+  .rankings{
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 100px;
+  }
+}
