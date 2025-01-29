@@ -1,7 +1,10 @@
+'use client'
+
 import Header from "@/components/atoms/header/header";
 import styles from "./page.module.css";
 import Ranking from "@/components/molecules/ranking/ranking";
 import { Participant } from "@/utils/interfaces";
+import Teams from "@/components/molecules/teams/teams";
 
 export default function Home() {
   const teamRanking: Participant[] = [
@@ -32,8 +35,11 @@ export default function Home() {
     <div className={styles.page}>
       <Header />
       <main className={styles.body}>
-        <Ranking title={"Ranking Escuderias"} participants={teamRanking} />
-        <Ranking title={"Ranking Pilotos"} participants={pilotRanking} />
+        <Teams />
+        <div className={styles.rankings}>
+          <Ranking title={"Ranking Escuderias"} participants={teamRanking} />
+          <Ranking title={"Ranking Pilotos"} participants={pilotRanking} />
+        </div>
       </main>
     </div>
   );
