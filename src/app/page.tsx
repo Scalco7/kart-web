@@ -1,16 +1,40 @@
 import Header from "@/components/atoms/header/header";
 import styles from "./page.module.css";
-import RankingBox from "@/components/atoms/ranking_box/ranking_box";
+import Ranking from "@/components/molecules/ranking/ranking";
+import { Participant } from "@/utils/interfaces";
 
 export default function Home() {
-  return (
-    <div >
-      <Header />
-      <div style={{ marginTop: '50px' }}></div>
-      <div style={{width: '300px', marginLeft: '20px'}}>
-        <RankingBox name="F. Scalco" position={1} points={20} />
-      </div>
+  const teamRanking: Participant[] = [
+    { name: 'Peugeot', points: 7 },
+    { name: 'Mclaren', points: 7 },
+    { name: 'Ferrari', points: 0 },
+    { name: 'Red Bull', points: 2 },
+    { name: 'Aston Martin', points: 5 },
+    { name: 'Mercedes', points: 1 },
+  ]
 
+  const pilotRanking: Participant[] = [
+    { name: 'Tiago', points: 1 },
+    { name: 'Cadu', points: 0 },
+    { name: 'Johnatan', points: 0 },
+    { name: 'Nicholas', points: 7 },
+    { name: 'G. Klisman', points: 0 },
+    { name: 'G. Scalco', points: 0 },
+    { name: 'Sandro', points: 0 },
+    { name: 'G. Pessi', points: 3 },
+    { name: 'F. Scalco', points: 2 },
+    { name: 'Murilo', points: 4 },
+    { name: 'Henrique', points: 5 },
+    { name: 'Matheus', points: 0 },
+  ]
+
+  return (
+    <div className={styles.page}>
+      <Header />
+      <main className={styles.body}>
+        <Ranking title={"Ranking Escuderias"} participants={teamRanking} />
+        <Ranking title={"Ranking Pilotos"} participants={pilotRanking} />
+      </main>
     </div>
   );
 }
