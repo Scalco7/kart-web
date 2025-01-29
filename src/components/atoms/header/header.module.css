@@ -1,0 +1,12 @@
+.main{
+    background-color: #120044;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.img{
+    height: 100%;
+    object-fit: contain;
+}
