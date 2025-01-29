@@ -20,9 +20,14 @@
     max-width: 40px;
     max-height: 50px;
     object-fit: contain;
+    cursor: pointer;
+    transition: transform 200ms ease-in-out;
 }
 
-.carousel {}
+.logo:hover{
+    transform: scale(1.2);
+    transition: transform 200ms ease-in-out;
+}
 
 @media(min-width: 375px){
     .logo{
