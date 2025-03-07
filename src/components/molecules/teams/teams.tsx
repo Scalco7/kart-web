@@ -1,8 +1,8 @@
 import TeamPresentation from '@/components/atoms/team_presentation/team_presentation'
 import styles from './teams.module.css'
 import { useState } from 'react'
-
-type teams = 'ferrari' | 'mclaren' | 'mercedes' | 'red-bull' | 'peugeot' | 'aston-martin'
+import { teams } from '@/utils/interfaces'
+import { teamColors } from '@/utils/consts'
 
 interface TeamData {
     color: string
@@ -10,12 +10,12 @@ interface TeamData {
 }
 
 const teamMap: Record<teams, TeamData> = {
-    ferrari: { color: '#E41C1F', imgPath: '/team-logo/ferrari.png' },
-    'red-bull': { color: '#121F45', imgPath: '/team-logo/red-bull.png' },
-    mclaren: { color: '#FF8000', imgPath: '/team-logo/mclaren.png' },
-    mercedes: { color: '#03BFB5', imgPath: '/team-logo/mercedes.png' },
-    peugeot: { color: '#000000', imgPath: '/team-logo/peugeot.png' },
-    'aston-martin': { color: '#00594F', imgPath: '/team-logo/aston-martin.png' },
+    ferrari: { color: teamColors.ferrari, imgPath: '/team-logo/ferrari.png' },
+    'red-bull': { color: teamColors['red-bull'], imgPath: '/team-logo/red-bull.png' },
+    mclaren: { color: teamColors.mclaren, imgPath: '/team-logo/mclaren.png' },
+    mercedes: { color: teamColors.mercedes, imgPath: '/team-logo/mercedes.png' },
+    peugeot: { color: teamColors.peugeot, imgPath: '/team-logo/peugeot.png' },
+    'aston-martin': { color: teamColors['aston-martin'], imgPath: '/team-logo/aston-martin.png' },
 }
 
 export default function Teams() {

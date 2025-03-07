@@ -3,22 +3,22 @@
 import Header from "@/components/atoms/header/header";
 import styles from "./page.module.css";
 import Ranking from "@/components/molecules/ranking/ranking";
-import { Participant, Racing, RankingPosition } from "@/utils/interfaces";
+import { Participant, Racing, RankingPosition, teamEnum } from "@/utils/interfaces";
 import Teams from "@/components/molecules/teams/teams";
 
 const pilots: Participant[] = [
-  { name: 'Tiago', team: 'Mercedes' },
-  { name: 'Cadu', team: 'Ferrari' },
-  { name: 'Johnatan', team: 'Peugeot' },
-  { name: 'Nicholas', team: 'Peugeot' },
-  { name: 'G. Klisman', team: 'RedBull' },
-  { name: 'G. Scalco', team: 'Ferrari' },
-  { name: 'Sandro', team: 'Aston Martin' },
-  { name: 'G. Pessi', team: 'Mclaren' },
-  { name: 'F. Scalco', team: 'RedBull' },
-  { name: 'Murilo', team: 'Mclaren' },
-  { name: 'Henrique', team: 'Aston Martin' },
-  { name: 'Matheus', team: 'Mercedes' },
+  { name: 'Tiago', team: 'mercedes' },
+  { name: 'Cadu', team: 'ferrari' },
+  { name: 'Johnatan', team: 'peugeot' },
+  { name: 'Nicholas', team: 'peugeot' },
+  { name: 'G. Klisman', team: 'red-bull' },
+  { name: 'G. Scalco', team: 'ferrari' },
+  { name: 'Sandro', team: 'aston-martin' },
+  { name: 'G. Pessi', team: 'mclaren' },
+  { name: 'F. Scalco', team: 'red-bull' },
+  { name: 'Murilo', team: 'mclaren' },
+  { name: 'Henrique', team: 'aston-martin' },
+  { name: 'Matheus', team: 'mercedes' },
 ]
 
 const racings: Racing[] = [
@@ -59,7 +59,7 @@ const racings: Racing[] = [
 ]
 
 function calcPilotRanking(): RankingPosition[] {
-  const ranking: RankingPosition[] = pilots.map(p => ({ name: p.name, points: 0 }))
+  const ranking: RankingPosition[] = pilots.map(p => ({ name: p.name, points: 0, team: p.team }))
 
   racings.forEach(racing => {
     racing.participants.forEach(participant => {
@@ -86,15 +86,16 @@ function calcTeamRanking(pilotRanking: RankingPosition[]): RankingPosition[] {
   pilots.forEach(pilot => {
     const points = pilotRanking.find(pr => pr.name == pilot.name)!.points
 
-    let rankingPosition: RankingPosition | undefined = ranking.find(rp => rp.name == pilot.team)
+    let rankingPosition: RankingPosition | undefined = ranking.find(rp => rp.team == pilot.team)
 
     if (rankingPosition) {
       rankingPosition.points += points
     }
     else {
       rankingPosition = {
-        name: pilot.team,
-        points: points
+        name: teamEnum[pilot.team],
+        points: points,
+        team: pilot.team
       }
 
       ranking.push(rankingPosition)

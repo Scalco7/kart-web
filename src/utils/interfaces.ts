@@ -1,4 +1,15 @@
-export interface Racing{
+export type teams = 'ferrari' | 'mclaren' | 'mercedes' | 'red-bull' | 'peugeot' | 'aston-martin'
+
+export enum teamEnum {
+    ferrari = "Ferrari",
+    mclaren = 'Mclaren',
+    mercedes = 'Mercedes',
+    'red-bull' = 'RedBull',
+    peugeot = 'Peugeot',
+    'aston-martin' = 'Aston Martin',
+}
+
+export interface Racing {
     raceTrack: string
     participants: RacingParticipant[]
 }
@@ -10,10 +21,11 @@ export interface RacingParticipant {
 
 export interface Participant {
     name: string
-    team: string
+    team: teams
 }
 
 export interface RankingPosition {
     name: string
     points: number
+    team: teams
 }
