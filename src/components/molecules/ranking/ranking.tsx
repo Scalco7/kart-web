@@ -1,10 +1,10 @@
 import styles from "./ranking.module.css"
 import RankingBox from "@/components/atoms/ranking_box/ranking_box"
-import { Participant } from "@/utils/interfaces"
+import { RankingPosition } from "@/utils/interfaces"
 
 interface RankingProps {
     title: string
-    participants: Participant[]
+    participants: RankingPosition[]
 }
 
 export default function Ranking({ title, participants }: RankingProps) {
