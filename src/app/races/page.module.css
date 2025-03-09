@@ -18,7 +18,7 @@
 .headerBox{
   display: flex;
   width: 90%;
-  gap: 15;
+  gap: 15px;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
