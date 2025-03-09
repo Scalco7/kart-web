@@ -29,13 +29,21 @@ export default function RankingBox({ position, name, points, team, gradientPerce
         borderRadius: '50px',
         padding: '0px 20px'
     }}>
-        <p style={{color: '#fff'}}>
+        <img src={`team-cars/${team}.png`} style={{
+            position: 'absolute',
+            width: 40,
+            left: `${gradientPercentage + gradientSpread - 10}%`,
+            objectFit: 'contain',
+            zIndex: 0,
+            opacity: 0.9,
+        }} />
+        <p style={{ color: '#fff', zIndex: 1 }}>
             {position}º
         </p>
-        <p style={{color: gradientPercentage + gradientSpread > 50 ? '#fff' : '#000'}}>
+        <p style={{ color: gradientPercentage + gradientSpread > 50 ? '#fff' : '#000', zIndex: 1 }}>
             {name}
         </p>
-        <p style={{color: '#000'}}>
+        <p style={{ color: '#000', zIndex: 1 }}>
             {points}pts
         </p>
     </main>
