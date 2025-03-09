@@ -1,4 +1,5 @@
 .main{
+    position: relative;
     background-color: #120044;
     height: 60px;
     width: 100%;
@@ -6,7 +7,69 @@
     justify-content: center;
 }
 
+.hamburguerIcon{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 25px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
 .img{
     height: 100%;
     object-fit: contain;
+}
+
+.navigationBar{
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    bottom: 0px;
+    align-items: center;
+    display: none;
+    gap: 20px;
+    color: #fff;
+}
+
+.navigationBox{
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #120044;
+    color: #fff;
+    padding: 10px;
+    gap: 5px;
+    z-index: 1;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+}
+
+.navigationText{
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.visible{
+    display: flex;
+}
+
+.hidden{
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .hamburguerIcon{
+        display: none;
+    }
+
+    .navigationBar{
+        display: flex;
+    }
 }
