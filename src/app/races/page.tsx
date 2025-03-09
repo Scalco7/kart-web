@@ -3,7 +3,7 @@
 import Header from "@/components/atoms/header/header";
 import styles from "./page.module.css";
 import { races } from "@/utils/consts";
-import { raceEnum, Racing, RankingPosition } from "@/utils/interfaces";
+import { raceEnum, Racing } from "@/utils/interfaces";
 import { useState } from "react";
 import Ranking from "@/components/molecules/ranking/ranking";
 import { calcPilotRanking } from "@/utils/pilotRanking";

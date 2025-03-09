@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./header.module.css";
+import Link from "next/link";
 
 export default function Header() {
     const [showNavigationBox, setShowNavigationBox] = useState(false)
@@ -11,13 +12,13 @@ export default function Header() {
     return <main className={styles.main}>
         <img className={styles.hamburguerIcon} src="icons/hamburguer_icon.png" onClick={() => toogleShowNavigationBox()}/>
         <div className={`${styles.navigationBox} ${showNavigationBox ? styles.visible : styles.hidden}`}>
-            <a href="/" className={styles.navigationText}>Home</a>
+            <Link href="/" className={styles.navigationText}>Home</Link>
             <div className={styles.line}></div>
-            <a href="/races" className={styles.navigationText}>Corridas</a>
+            <Link href="/races" className={styles.navigationText}>Corridas</Link>
         </div>
         <nav className={styles.navigationBar}>
-            <a href="/" className={styles.navigationText}>Home</a>
-            <a href="/races" className={styles.navigationText}>Corridas</a>
+            <Link href="/" className={styles.navigationText}>Home</Link>
+            <Link href="/races" className={styles.navigationText}>Corridas</Link>
         </nav>
         <img className={styles.img} src="kart-logo.png" />
     </main>
