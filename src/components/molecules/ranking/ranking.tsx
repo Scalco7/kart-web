@@ -4,7 +4,7 @@ import { RankingPosition } from "@/utils/interfaces"
 
 interface RankingProps {
     title: string
-    participants: RankingPosition[]
+    ranking: RankingPosition[]
 }
 
 function calcGradientPercentage(maxPoint: number, pilotPoint: number): number {
@@ -15,14 +15,14 @@ function calcGradienSpread(maxPoint: number, pilotPoint: number): number {
     return (pilotPoint * 20 / maxPoint) + 10
 }
 
-export default function Ranking({ title, participants }: RankingProps) {
-    participants = participants.sort((a, b) => b.points - a.points)
-    const maxPoint = participants[0].points
+export default function Ranking({ title, ranking }: RankingProps) {
+    ranking = ranking.sort((a, b) => b.points - a.points)
+    const maxPoint = ranking[0].points
 
     return <main className={styles.main}>
         <p className={styles.title}>{title}</p>
         <div className={styles.boxRanking}>
-            {participants.map((p, i) => <RankingBox
+            {ranking.map((p, i) => <RankingBox
                 key={`participant-${i}`}
                 position={i + 1}
                 name={p.name}

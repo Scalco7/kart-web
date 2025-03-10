@@ -2,11 +2,28 @@
 
 import Header from "@/components/atoms/header/header";
 import styles from "./page.module.css";
-import { races } from "@/utils/consts";
-import { raceEnum, Racing } from "@/utils/interfaces";
+import { pilots, races } from "@/utils/consts";
+import { raceEnum, Racing, RankingPosition } from "@/utils/interfaces";
 import { useState } from "react";
 import Ranking from "@/components/molecules/ranking/ranking";
-import { calcPilotRanking } from "@/utils/pilotRanking";
+import { getPointsByPosition } from "@/utils/pilotRanking";
+
+function calcRanking(race: Racing): RankingPosition[] {
+    race.participants.sort((a, b) => a.position - b.position)
+    const ranking: RankingPosition[] =[]
+
+    race.participants.forEach(participant => {
+        const position: RankingPosition = {
+            name: participant.name,
+            points: getPointsByPosition(participant.position),
+            team: pilots.find(p => p.name == participant.name)!.team
+        }
+
+        ranking.push(position)
+    })
+
+    return ranking
+}
 
 export default function Races() {
     const [raceSelected, setRaceSelected] = useState(races[0])
@@ -31,7 +48,7 @@ export default function Races() {
             <div className={styles.showRaceBox}>
                 <p className={styles.selectedRaceTitle}>{raceEnum[raceSelected.raceTrack]}</p>
                 {raceSelected.participants.length > 0
-                    ? <Ranking title={"Posições"} participants={calcPilotRanking([raceSelected])} />
+                    ? <Ranking title={"Posições"} ranking={calcRanking(raceSelected)} />
                     : <div>
                         <p>Esta corrida ainda vai acontecer...</p>
                         <p>Quem será o vencedor???</p>
